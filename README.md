@@ -1,5 +1,6 @@
 # LocationSearch
 Roamler Assignment
+
 Considerations/Comments:
 
 1) The Locations.csv file has been placed in the root directory for this assignment only. Right way would be to make it configurable.
