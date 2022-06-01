@@ -16,7 +16,7 @@ namespace LocSearchUnitTest
         {
             //Arrange
             HomeController sv = new HomeController();
-            Location pLocation = new Location(double.Parse("51.644054"), double.Parse("5.6548692"),"name");
+            Location pLocation = new Location(double.Parse("51.644054"), double.Parse("5.6548692"),"testname");
             int maxDistance = 100;
             int maxResults = 10;
             TaskLocationSearch sr = new TaskLocationSearch();

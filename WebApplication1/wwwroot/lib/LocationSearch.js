@@ -8,8 +8,7 @@ function getLocations() {
     var maxDistance = document.getElementById("maxDistance").value;
     var maxResults = document.getElementById("maxResults").value;
     var sUrl = '/Home/findLocation?Latitude=' + gLatitude + '&Longitude=' + gLongitude + '&maxDistance=' + maxDistance + '&maxResults=' + maxResults;
-    //console.log(sUrl); + gLatitude + '/' + gLongitude + '/' + maxDistance + '/' + maxResults data["Locations"][i]
-
+    
     jQuery.ajax({
         type: 'GET',
         url: sUrl,
@@ -24,11 +23,10 @@ function getLocations() {
                     var name = data.allLocations[i]["Name"];
                     var longitude = data.allLocations[i]["Longitude"];
                     var latitude = data.allLocations[i]["Latitude"];
+                    delete data.allLocations[i]["distance"];
 
                 }
                 document.getElementById("jsonOutput").innerHTML = JSON.stringify(data.allLocations, null, 4);
-
-                //document.getElementById("fileRecords").value = data.fileRecords;
                 document.getElementById("rDuration").value = data.timeToSearch;
                 document.getElementById("fileDuration").value = data.timeToRead;
                 document.getElementById("rLatitude").value = data.latitude;
@@ -37,6 +35,9 @@ function getLocations() {
                 document.getElementById("rMax").value = data.maxResults;
             }
             document.getElementById("overlay").style.display = "none";
+            document.getElementById("json").style.display = "block";
+            document.getElementById("tTimes").style.display = "block";
+
         },
 
         error: function (msg, url, line) {

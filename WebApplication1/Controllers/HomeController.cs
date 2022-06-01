@@ -13,9 +13,7 @@ namespace ProjLocationSearch.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-       // private readonly IConfiguration Configuration;
-
+       
         public IActionResult Index()
         {
             return View();
@@ -66,18 +64,18 @@ namespace ProjLocationSearch.Controllers
             try
             {
                 //Get all Locations
-                List<Location> lLocations = new List<Location>();
+                List<Location> fLocations = new List<Location>();
                 LocationData gData = new LocationData();
-                DateTime t1 = DateTime.UtcNow;
-                lLocations = gData.getAllLocations();
-                DateTime t2 = DateTime.UtcNow;
-                TimeSpan t = t2 - t1;
-                double d = t.TotalSeconds;
-                tlsInput.timeToRead = d;
+                DateTime sTime = DateTime.UtcNow; //Start time
+                fLocations = gData.getAllLocations();
+                DateTime eTime = DateTime.UtcNow; //End Time
+                TimeSpan tSpan = eTime - sTime;
+                double tTaken = tSpan.TotalSeconds;
+                tlsInput.timeToRead = tTaken;
 
                 //Order By Distance
                 //Parallelism to Improve the Search Performance
-                List<Location> orderByDistance = lLocations.AsParallel().WithDegreeOfParallelism(4).OrderByDescending(o => o.CalculateDistance(pLocation)).ToList();
+                List<Location> orderByDistance = fLocations.AsParallel().WithDegreeOfParallelism(4).OrderBy(o => o.CalculateDistance(pLocation)).ToList();
 
                 //Filter the Locations as per I/P
                 List<Location> filteredData = orderByDistance.AsParallel().WithDegreeOfParallelism(4).GroupBy(x => new { x.Distance, x.Longitude, x.Latitude })

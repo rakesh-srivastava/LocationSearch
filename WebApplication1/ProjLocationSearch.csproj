@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\images\Roamler_Logo.png" />
     <None Include="wwwroot\lib\LocationSearch.js" />
   </ItemGroup>
 

@@ -17,7 +17,7 @@ namespace ProjLocationSearch.Models
         public string maxResults { get; set; } //Restricting the No of records as per I/P
         public List<Location> AllLocations { get; set; } //List of filtered Locations as per Geographical Coordinates provided
         public string Error { get; set; }
-        //public int FileRecords { get; set; }
+        
 
         public void StartSearch(string pLatitude, string pLongitude, string pDistance, string pmaxResults)
         {
