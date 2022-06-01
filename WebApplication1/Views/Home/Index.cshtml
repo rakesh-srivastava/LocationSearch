@@ -1,0 +1,98 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>Location Search</title>
+<style>
+    #overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+#text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 50px;
+  color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+</style>
+<div class="container">
+    <section id="content">
+        <form action="">
+            <div class="form-row">
+                <div class="col">
+                    <input type="number" step="any" class="form-control" id="txtLatitude" placeholder="Provide Latitude">
+                </div>
+                <div class="col">
+                    <input type="number" step="any" class="form-control" id="txtLongitude" placeholder="Provide Longitude">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col">
+                    <input type="number" class="form-control" id="maxDistance" placeholder="Provide max Distance">
+                </div>
+                <div class="col">
+
+                    <input type="number" class="form-control" id="maxResults" placeholder="Provide max number of results">
+                </div>
+            </div>
+            <div class="text-center m-3">
+                <input type="button" class="btn btn-primary" value="Search" id="Search" />
+
+            </div>
+        </form>
+    </section>
+</div>
+
+<div id="tTimes">
+    <table class="table table-dark">
+        <tr>
+            <td>Total Duration</td>
+            <td>Read File Duration</td>
+            <td>Latitude</td>
+            <td>Longitude</td>
+            <td>Distance</td>
+            <td>Max</td>
+        </tr>
+        <tr>
+            <td>
+                <input id="rDuration" type="text" value="0" readonly class="form-control" />
+            </td>
+            <td>
+                <input id="fileDuration" type="text" value="0" readonly class="form-control"/>
+            </td>
+            <td>
+                <input id="rLatitude" type="text" value="0" readonly class="form-control" />
+            </td>
+            <td>
+                <input id="rLongitude" type="text" value="0" readonly class="form-control"/>
+            </td>
+            <td>
+                <input id="rDistance" type="text" value="0" readonly class="form-control"/>
+            </td>
+            <td>
+                <input id="rMax" type="text" value="0" readonly class="form-control" />
+            </td>
+        </tr>
+
+    </table>
+</div>
+<hr />
+<p>JSON Output</p>
+<br />
+<pre id="jsonOutput"></pre>
+<div id="overlay">
+    <div id="text">Loading Locations...</div>
+</div>
