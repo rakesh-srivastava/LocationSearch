@@ -14,14 +14,14 @@ namespace ProjLocationSearchUnitTest
         [TestMethod]
         public void FetchLocationTest()
         {
-            //Arrange
+            
             HomeController sv = new HomeController();
+            //Sample data for test
             Location pLocation = new Location(double.Parse("51.644054"), double.Parse("5.6548692"),"testname");
             int maxDistance = 100;
             int maxResults = 10;
             TaskLocationSearch taskLocationSearch = new TaskLocationSearch();
             TaskLocationSearch actualLocation;
-            //Act
             taskLocationSearch.StartSearch("52.2165425", "5.4778534", maxDistance.ToString(), maxResults.ToString());
             actualLocation = sv.filterLocation(pLocation, maxDistance, maxResults, taskLocationSearch);
             
